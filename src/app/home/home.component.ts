@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AppService } from '../app.service';
+import { Customer } from '../models/customer';
 
 @Component({
   selector: 'app-home',
@@ -6,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.sass']
 })
 export class HomeComponent {
+
+  customer: Customer;
+
+  constructor(service: AppService){
+    this.customer = service.customer;
+  }
 
 }

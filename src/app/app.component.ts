@@ -38,7 +38,8 @@ export class AppComponent implements OnInit{
     
     this.domain = this.document.location.hostname;
     this.service.getCustomerByURL(this.domain).subscribe(customer => {
-      this.customer = customer[0]
+      this.customer = customer[0];
+      this.service.customer = this.customer;
       this.activeLeague = this.customer.active_league
       this.service.activeLeague = this.activeLeague
     })

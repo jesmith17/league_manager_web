@@ -1,0 +1,16 @@
+runtime: nodejs20
+
+service: league-manager-web
+
+handlers:
+- url: /index.html
+  static_files: dist/league-manager-web/index.html
+  upload: dist/league-manager-web/index.html
+
+- url: /
+  static_dir: dist/league-manager-web
+  # upload: dist/league-manager-web/.*\.(js|css)$
+
+- url: /assets
+  static_files: dist/league-manager-web/assets
+  upload: dist/league-manager-web/assets/*.png

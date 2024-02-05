@@ -1,37 +1,38 @@
-<div class="card">
+<div class="card mat-elevation-z6">
     <div class="card-header">
         <h4 class="card-title">Divisions</h4>
     </div>
     <div class="card-body">
         <div class="col">
-            <form [formGroup]="filterForm" (ngSubmit)="filterDivisions()">
-                <mat-form-field>
-                    <mat-label>Type</mat-label>
-                    <mat-select formControlName="level">
-                        <mat-option value="" [disabled]="true">Division Type</mat-option>
-                        <mat-option *ngFor="let type of leagueTypes" value={{type.value}}>{{type.display}}</mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <mat-form-field>
-                    <mat-label>Gender</mat-label>
-                    <mat-select formControlName="gender" id="gender">
-                        <mat-option value="" [disabled]="true">Gender</mat-option>
-                        <mat-option *ngFor="let gender of genderValues" value={{gender.value}}>{{gender.display}}</mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <mat-form-field>
-                    <mat-label for="age">Age</mat-label>
-                    <mat-select formControlName="age" id="age">
-                        <mat-option value="" [disabled]="true">Age</mat-option>
-                        <mat-option *ngFor="let age of ageValues" value={{age.value}}>{{age.display}}</mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <div>
-                    <button class="btn btn-primary" type="submit" id="submit">Filter</button>
-                    <button class="btn btn-outline-secondary" type="button" id="reset" (click)="resetForm()">Reset</button>
-                </div>
+            <form [formGroup]="filterForm" (ngSubmit)="filterDivisions()" class="row g-3 row-cols-md-auto align-items-center">
+                    <div class="form-floating">
+                        <select formControlName="level" id="level"  class="form-select">
+                            <option value="" [disabled]="true">Division Type</option>
+                            <option *ngFor="let type of leagueTypes" value={{type.value}}>{{type.display}}</option>
+                        </select>
+                        <label for="level">Level</label>
+                    </div>
+                    <div class="form-floating">
+                        <select formControlName="gender" id="gender"  class="form-select">
+                            <option value="" [disabled]="true">Gender</option>
+                            <option *ngFor="let gender of genderValues" value={{gender.value}}>{{gender.display}}</option>
+                        </select>
+                        <label for="gender">Gender</label>
+                    </div>
+                    <div class="form-floating">
+                        <select formControlName="age" id="age" class="form-select">
+                            <option value="" [disabled]="true">Age</option>
+                            <option *ngFor="let age of ageValues" value={{age.value}}>{{age.display}}</option>
+                        </select>
+                        <label for="age">Age</label>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary" type="submit" id="submit">Filter</button>
+                        <button class="btn btn-outline-secondary" type="button" id="reset" (click)="resetForm()">Reset</button>
+                    </div>
             </form> 
         </div>
+        <div class="divider"></div>
         <table mat-table [dataSource]="leagues" matSort #divisionSort="matSort" class="table table-striped">
             <ng-container matColumnDef="name">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
