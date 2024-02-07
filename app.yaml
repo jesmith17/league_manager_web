@@ -3,14 +3,15 @@ runtime: nodejs20
 service: league-manager-web
 
 handlers:
-- url: /index.html
+
+- url: /(.*\.(gif|png|jpg|css|js|woff|woff2|ttf|eot|svg|ico)(|\.map))$
+  static_files: dist/league-manager-web/\1
+  upload: dist/league-manager-web/(.*\.(gif|png|jpg|css|js|woff|woff2|ttf|eot|svg|ico)(|\.map))$
+
+- url: /assets/(.*)
+  static_files: dist/league-manager-web/assets
+  upload: dist/league-manager-web/assets/(.*)
+
+- url: /(.*)
   static_files: dist/league-manager-web/index.html
   upload: dist/league-manager-web/index.html
-
-- url: /
-  static_dir: dist/league-manager-web
-  # upload: dist/league-manager-web/.*\.(js|css)$
-
-- url: /assets
-  static_files: dist/league-manager-web/assets
-  upload: dist/league-manager-web/assets/*.png
