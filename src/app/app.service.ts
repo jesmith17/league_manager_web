@@ -8,6 +8,7 @@ import { Game } from './models/game';
 import { Customer } from './models/customer';
 import { Division } from './models/division';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -18,16 +19,24 @@ export class AppService {
   leagues: Observable<League[]>;
   customer: Customer;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
   apiUrl = environment.apiUrl;
 
-  getLeagues(searchParams? :any): Observable<League[]> {
+  getLeagues(): Observable<League[]> {
     let params = new HttpParams();
-    params = params.append('tenant', 'Heartland');
-    params = params.append('season', '2023-2024');
+    params = params.append('customer_id', this.customer.id);
     this.leagues = this.http.get<League[]>(`${this.apiUrl}/leagues`, {params});
     return this.leagues;
   }
+
+  getLeague(id? :any): Observable<League> {
+    let params = new HttpParams();
+    params = params.append('customer_id', this.customer.id);
+    return this.http.get<League>(`${this.apiUrl}/leagues/${id}`, {params});
+  }
+
+
+  
 
   getDivisionsForLeague(): Observable<Division[]> {
     return this.http.get<Division[]>(`${this.apiUrl}/leagues/${this.activeLeague.id}/divisions`);
@@ -43,9 +52,7 @@ export class AppService {
     return this.http.get<Customer[]>(`${this.apiUrl}/customers`, {params})
   }
 
-  getLeague(id? :any): Observable<League> {
-    return this.http.get<League>(`${this.apiUrl}/${id}`);
-  }
+  
 
   getTeamsForDivision(id? :any): Observable<Team[]> {
     let params = new HttpParams();
@@ -59,7 +66,7 @@ export class AppService {
     params = params.append('division_id', id);
     params = params.append('league_id', this.activeLeague.id);
     params = params.append('upcoming', upcoming)
-    return this.http.get<Game[]>(`${this.apiUrl}/games`, {params});
+    return this.http.get<Game[]>(`http://localhost:3000/games`, {params});
   }
 
   getGamesForTeam(id:any): Observable<Game[]> {

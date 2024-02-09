@@ -9,6 +9,7 @@ import { LeagueHomeComponent } from './league-home/league-home.component';
 import { TeamHomeComponent } from './team-home/team-home.component';
 import { LeagueResultsComponent } from './league-results/league-results.component';
 import { LeagueScheduleComponent } from './league-schedule/league-schedule.component';
+import { AdminRoutingModule } from './admin/admin-routing.module';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent, title: "Heartland Soccer Home", data: {linkText: "Home"}},
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path: 'team', component: TeamHomeComponent, title: "Team Home", children: [
     {path: ':id', component: TeamDetailComponent, title: "Team Detail"},
   ]},
+  {path: 'admin', loadChildren: () => AdminRoutingModule },
   {path: '**', component: HomeComponent}
 ];
 

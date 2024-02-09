@@ -14,7 +14,7 @@ export class AppInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     console.log(request);
-    request = request.clone({headers: request.headers.set('Accept', 'application/json')});
+    request = request.clone({headers: request.headers.append('Accept', 'application/json')});
     return next.handle(request);
   }
 }

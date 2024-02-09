@@ -21,16 +21,12 @@ division_id?: any;
 league_id?: any;
 selectedDivision: Observable<Division>;
 league?: League;
-teams = new MatTableDataSource<Team>;
 games = new MatTableDataSource<Game>;
 upcoming:boolean = true;
-showTeams = false;
 showGames = false;
 
-@ViewChild('teamSort') teamSort: MatSort;
 @ViewChild('gameSort') gameSort: MatSort;
 
-teamsColumns = ['name','sm-result','wins','losses','draws','gf','ga','gd','pts']
 gameColumns = ['home','away','game_time','venue','field']
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router, private appService: AppService){}
@@ -42,11 +38,6 @@ gameColumns = ['home','away','game_time','venue','field']
     this.activatedRoute.params.subscribe(params => {
       this.division_id = params['id'];
       this.selectedDivision = this.appService.getDivisionById(this.division_id);
-      this.appService.getTeamsForDivision(this.division_id).subscribe(teams => {
-        this.teams.data = teams;
-        this.showTeams = true;
-  
-      })
       this.appService.getGamesForDivision(this.division_id, this.upcoming).subscribe(games => {
         this.games.data = games;
         this.showGames = true;
@@ -55,19 +46,7 @@ gameColumns = ['home','away','game_time','venue','field']
   }
 
  ngAfterViewInit(): void {
-   this.teams.sortingDataAccessor = (item, property) => {
-    switch(property) {
-      case 'name':  console.log(property); return item.name;
-      case 'wins': return item.record.wins; 
-      case 'losses': return item.record.losses;
-      case 'draws': return item.record.draws; 
-      case 'gf': return item.record.goals_for;
-      case 'ga': return item.record.goals_allowed;
-      case 'gd': return item.record.goal_differential;
-      case 'pts': return item.record.points;
-      default: return item.name;
-    }
-  };
+   
   
   this.games.sortingDataAccessor = (item, property) => {
     switch(property) {
@@ -79,7 +58,7 @@ gameColumns = ['home','away','game_time','venue','field']
       default: return 0;
     }
   };
-  this.teams.sort = this.teamSort;
+  
   this.games.sort = this.gameSort;
 
   
