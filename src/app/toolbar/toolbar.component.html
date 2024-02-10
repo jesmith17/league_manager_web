@@ -1,44 +1,38 @@
-      <!--<span><img src="assets/heartland-shield@512p.png" height="60px"></span>
-      <span>Heartland Soccer League</span>
-      <span class="example-spacer">&nbsp;</span>
-      <ng-container *ngIf="leagues | async as leagues" class="d-flex">
-        <button mat-button [matMenuTriggerFor]="menu">{{activeLeague.name}}</button>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item *ngFor="let league of leagues" (click)="switchLeague(league.id)">{{league.name}}</button>
-        </mat-menu>
-      </ng-container>-->
-
-
-      <nav class="py-2 bg-light border-bottom">
-        <div class="container d-flex flex-wrap">
-          <ul class="nav me-auto">
-            <li class="nav-item"></li>
-          </ul>
-          <ul class="nav">
-            <li class="nav-item"><a [routerLink]="['/login']" class="nav-link link-dark px-2">Login</a></li>
-            <ng-container *ngIf="currentUser">
-              <li class="nav-item"><a [routerLink]="['/admin/profile']" class="nav-link link-dark px-2">Profile</a></li>
-            </ng-container>
-          </ul>
-        </div>
-      </nav>
-      <header class="py-3 mb-4 border-bottom bg-primary mat-elevation-z18">
-        <div class="container d-flex flex-wrap justify-content-center">
-          <a href="#" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-white text-decoration-none">
-            <img src="assets/heartland-shield@512p.png" height="60px">
-            <span class="fs-4">{{ customer.name }}</span>
-          </a>
-          <ng-container *ngIf="leagues | async as leagues">
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item" ngbDropdown>
-                <a class="nav-link text-white fs-5 mb-3 me-lg-auto" tabindex="0" ngbDropdownToggle id="navbarDropdown1" role="button"> {{ activeLeague.name}} </a>
-                <div ngbDropdownMenu aria-labelledby="navbarDropdown1" class="dropdown-menu dropdown-menu-end">
-                  <a ngbDropdownItem *ngFor="let league of leagues" (click)="$event.preventDefault();switchLeague(league.id)">{{ league.name}}</a>
-                  
-                </div>
-              </li>
-            </ul>
-          </ng-container>
-        </div>
-      </header>
-      
+<nav class="py-2 bg-light border-bottom">
+  <div class="container d-flex flex-wrap">
+    <ul class="nav me-auto">
+      <li class="nav-item"></li>
+    </ul>
+    <ul class="nav">
+      <li class="nav-item"><a [routerLink]="['/login']" class="nav-link link-dark px-2">Login</a></li>
+      <ng-container *ngIf="currentUser">
+        <li class="nav-item"><a [routerLink]="['/admin/profile']" class="nav-link link-dark px-2">Profile</a></li>
+      </ng-container>
+    </ul>
+  </div>
+</nav>
+<header class="py-3 mb-0 bg-primary mat-elevation-z18 stick-top">
+  <div class="container d-flex flex-wrap justify-content-center">
+    <button class="navbar-toggler p-2 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdSidebar" aria-controls="bdSidebar" aria-label="Toggle Sidebar">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="bi" fill="currentColor" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"></path>
+      </svg>
+      <span class="d-none fs-6 pe-1">Menu</span>
+    </button>
+    <a href="#" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-white text-decoration-none">
+      <img src="assets/heartland-shield@512p.png" height="60px">
+      <span class="fs-4">{{ customer.name }}</span>
+    </a>
+    <ng-container *ngIf="leagues | async as leagues">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item" ngbDropdown>
+          <a class="nav-link text-white fs-5 mb-3 me-lg-auto" tabindex="0" ngbDropdownToggle id="navbarDropdown1" role="button"> {{ activeLeague.name}} </a>
+          <div ngbDropdownMenu aria-labelledby="navbarDropdown1" class="dropdown-menu dropdown-menu-end">
+            <a ngbDropdownItem *ngFor="let league of leagues" (click)="$event.preventDefault();switchLeague(league.id)">{{ league.name}}</a>
+            
+          </div>
+        </li>
+      </ul>
+    </ng-container>
+  </div>
+</header>

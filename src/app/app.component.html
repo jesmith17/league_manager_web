@@ -1,14 +1,18 @@
 <ng-container *ngIf="activeLeague">
-<!--<div class="mat-elevation-z24">
-    <mat-toolbar color="primary">
-      <button mat-icon-button class="example-icon" (click)="sidenav.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <app-toolbar></app-toolbar>
-    </mat-toolbar>
-</div>-->
-<app-toolbar></app-toolbar>
-<mat-sidenav-container class="example-container" autosize>
+  <app-toolbar></app-toolbar>
+  <div class="container-fluid p-0 d-flex h-100">
+    <div id="bdSidebar" class="d-flex flex-column  
+                    flex-shrink-0  
+                    p-0 
+                    text-bg-dark offcanvas-md offcanvas-start">
+      <app-sidenav [customer]="customer"></app-sidenav>
+    </div>
+    <div class="flex-fill p-3">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+  <!--<mat-sidenav-container class="example-container" autosize>
     <mat-sidenav #sidenav class="example-sidenav" position="start" [mode]="mobileQuery.matches ? 'over' : 'side'"
         [fixedTopGap]="options.value.top"
         [fixedBottomGap]="options.value.bottom" [(opened)]="showSideNav">
@@ -17,5 +21,5 @@
       <div class="container pt-2">
           <router-outlet></router-outlet>
       </div>
-  </mat-sidenav-container>
+  </mat-sidenav-container>-->
 </ng-container>

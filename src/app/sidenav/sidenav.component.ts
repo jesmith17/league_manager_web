@@ -1,7 +1,9 @@
 import { NestedTreeControl } from '@angular/cdk/tree';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
 import { Router, Route } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Customer } from '../models/customer';
 
 interface MenuLink {
   path: string,
@@ -17,22 +19,18 @@ interface MenuLink {
   styleUrls: ['./sidenav.component.sass']
 })
 export class SidenavComponent implements OnInit{
-  treeControl = new NestedTreeControl<any>(node => node.children);
-  dataSource = new MatTreeNestedDataSource<MenuLink>();
+  
+  links: any;
+  @Input() customer: Customer;
   
   
   constructor(private router: Router){}
   hasChild = (_: number, node: MenuLink) => !!node.children && node.children.length > 0;
   ngOnInit(): void {
     
-    this.dataSource.data = [
-      {path: 'home', title: "Home"},
-      {path: 'league', title: "Divisions", 
-        children: [
-          {path: 'league/schedules', title: "Schedule"},
-          {path: 'league/results', title: "Results/Standings"},
-        ]
-      },
+    this.links = [
+      {path: 'home', title: "Home", icon: 'fa-house'},
+      {path: 'league', title: "Divisions"},
       {path: 'team', title: "Team Search"},
       {path: 'tournaments', title: "Tournaments"}, 
       {path: 'coaches', title: "Coaches"}, 
