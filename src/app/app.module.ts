@@ -35,6 +35,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { AdminModule } from './admin/admin.module';
 import { JwtModule } from '@auth0/angular-jwt';
 import { MatButtonModule } from '@angular/material/button';
+import {MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 
 
 
@@ -75,6 +77,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatTableModule,
     MatSortModule,
     MatTreeModule, 
+    MatMenuModule,
     ReactiveFormsModule,
     FontAwesomeModule,
     JwtModule,

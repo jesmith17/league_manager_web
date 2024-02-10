@@ -22,11 +22,11 @@ export class AuthInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         // Clone the request to add the new header
         let token = localStorage.getItem('currentUser');
-        if (req.url.indexOf('/admin/login') !== -1) {
+        if (req.url.indexOf('/login') !== -1 || req.method == 'GET') {
             return next.handle(req.clone());
         }
         if (token == null || this.jwtHelper.isTokenExpired(token)) {
-            this.router.navigate(['/admin/login']);
+            this.router.navigate(['/login']);
         } else {
             req.headers.append('Authorization', `Bearer ${token}`);
         }
@@ -35,7 +35,7 @@ export class AuthInterceptor implements HttpInterceptor {
           (event: HttpEvent<any>) => {}, (err: any) => {
             if (err instanceof HttpErrorResponse && err.status === 401) {
                 // handle 401 errors
-                this.router.navigate(['/admin/login']);
+                this.router.navigate(['/login']);
             }}
           )
         );

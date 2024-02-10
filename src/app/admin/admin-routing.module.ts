@@ -5,7 +5,6 @@ import { LoginComponent } from './login/login.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const routes: Routes = [
-  {path: 'login', component: LoginComponent},
   {path: 'profile', component: UserProfileComponent},
   /*{path: 'league', component: LeagueHomeComponent, title: "League Home", data: {linkText: "Leagues"}, 
     children: [

@@ -38,7 +38,8 @@ export class SidenavComponent implements OnInit{
       {path: 'coaches', title: "Coaches"}, 
       {path: 'referees', title: "Referees"}, 
       {path: 'sponsors', title: "Sponsors"}, 
-      {path: 'admin/login', title: "Login"}
+      {path: 'login', title: "Login"},
+      {path: 'admin/profile', title: "Profile"}
 
     ]
   }

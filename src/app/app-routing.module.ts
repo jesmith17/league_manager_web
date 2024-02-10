@@ -10,6 +10,8 @@ import { TeamHomeComponent } from './team-home/team-home.component';
 import { LeagueResultsComponent } from './league-results/league-results.component';
 import { LeagueScheduleComponent } from './league-schedule/league-schedule.component';
 import { AdminRoutingModule } from './admin/admin-routing.module';
+import { AuthGuard } from './guards/auth.guard';
+import { LoginComponent } from './admin/login/login.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent, title: "Heartland Soccer Home", data: {linkText: "Home"}},
@@ -24,7 +26,8 @@ const routes: Routes = [
   {path: 'team', component: TeamHomeComponent, title: "Team Home", children: [
     {path: ':id', component: TeamDetailComponent, title: "Team Detail"},
   ]},
-  {path: 'admin', loadChildren: () => AdminRoutingModule },
+  {path: 'login', component: LoginComponent},
+  {path: 'admin', loadChildren: () => AdminRoutingModule, canActivateChild: [AuthGuard] },
   {path: '**', component: HomeComponent}
 ];
 

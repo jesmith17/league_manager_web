@@ -6,6 +6,7 @@ import { AppService } from './app.service';
 import { DOCUMENT } from '@angular/common';
 import { Customer } from './models/customer';
 import { MediaMatcher } from '@angular/cdk/layout';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -37,12 +38,14 @@ export class AppComponent implements OnInit{
   ngOnInit(): void {
     
     this.domain = this.document.location.hostname;
-    this.service.getCustomerByURL(this.domain).subscribe(customer => {
-      this.customer = customer[0];
-      this.service.customer = this.customer;
-      this.activeLeague = this.customer.active_league
-      this.service.activeLeague = this.activeLeague
-    })
+    if (!this.customer){
+      this.service.getCustomerByURL(this.domain).subscribe(customer => {
+        this.customer = customer[0];
+        this.service.customer = this.customer;
+        this.activeLeague = this.customer.active_league
+        this.service.activeLeague = this.activeLeague
+      })
+    }
 
     
     

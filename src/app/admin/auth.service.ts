@@ -17,6 +17,7 @@ export class AuthService {
   private token?: string |  null;
 
   constructor(private http: HttpClient) {
+    this.token = localStorage.getItem('currentUser');
   }
 
   login(username: string, password: string): Observable<boolean> {
@@ -49,6 +50,7 @@ export class AuthService {
   }
 
   public hasValidToken(): boolean {
+    console.log(this.token)
     return this.token != null && !this.jwtHelper.isTokenExpired(this.token);
   }
 

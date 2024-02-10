@@ -1,4 +1,10 @@
-<span><img src="assets/heartland-shield@512p.png" height="60px"></span>
-<span>Heartland Soccer League</span>
-<span class="example-spacer"></span>
+      <span><img src="assets/heartland-shield@512p.png" height="60px"></span>
+      <span>Heartland Soccer League</span>
+      <span class="example-spacer">&nbsp;</span>
+      <ng-container *ngIf="leagues | async as leagues" class="d-flex">
+        <button mat-button [matMenuTriggerFor]="menu">{{activeLeague.name}}</button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item *ngFor="let league of leagues" (click)="switchLeague(league.id)">{{league.name}}</button>
+        </mat-menu>
+      </ng-container>
       
