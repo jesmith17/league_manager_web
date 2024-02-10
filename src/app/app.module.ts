@@ -26,7 +26,6 @@ import { AppService } from './app.service';
 import { AppInterceptor } from './app.interceptor';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { TopmenuComponent } from './topmenu/topmenu.component';
 import { LeagueHomeComponent } from './league-home/league-home.component';
 import { TeamHomeComponent } from './team-home/team-home.component';
 import { LeagueScheduleComponent } from './league-schedule/league-schedule.component';
@@ -37,6 +36,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { MatButtonModule } from '@angular/material/button';
 import {MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -55,7 +55,6 @@ import { MatSelectModule } from '@angular/material/select';
     StandingsComponent,
     ToolbarComponent,
     SidenavComponent,
-    TopmenuComponent,
     LeagueHomeComponent,
     TeamHomeComponent,    
     LeagueScheduleComponent,
@@ -81,7 +80,8 @@ import { MatSelectModule } from '@angular/material/select';
     ReactiveFormsModule,
     FontAwesomeModule,
     JwtModule,
-    AdminModule
+    AdminModule,
+    NgbModule
   ],
   providers: [
     AppService,

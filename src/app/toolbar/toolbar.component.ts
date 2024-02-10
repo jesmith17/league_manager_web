@@ -5,6 +5,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { League } from '../models/league';
 import { Customer } from '../models/customer';
+import { AuthService } from '../admin/auth.service';
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-toolbar',
@@ -17,10 +19,13 @@ export class ToolbarComponent implements OnInit{
   leagues: Observable<League[]>;
   activeLeague: League;
   customer: Customer;
+  currentUser: User;
+  collapsed = false;
 
-  constructor(private router: Router, private appService: AppService, private fb:FormBuilder){
+  constructor(private router: Router, private appService: AppService, private fb:FormBuilder, private authService: AuthService){
     this.activeLeague = this.appService.activeLeague;
     this.customer = this.appService.customer;
+    
   }
   
   ngOnInit(): void {
@@ -30,6 +35,9 @@ export class ToolbarComponent implements OnInit{
     });
     this.leagues = this.appService.getLeagues();
 
+    if (this.authService.user){
+      this.currentUser = this.authService.user;
+    }
 
   }
 

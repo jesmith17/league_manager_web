@@ -1,12 +1,13 @@
 <ng-container *ngIf="activeLeague">
-<div class="mat-elevation-z24">
+<!--<div class="mat-elevation-z24">
     <mat-toolbar color="primary">
       <button mat-icon-button class="example-icon" (click)="sidenav.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
       <app-toolbar></app-toolbar>
     </mat-toolbar>
-</div>
+</div>-->
+<app-toolbar></app-toolbar>
 <mat-sidenav-container class="example-container" autosize>
     <mat-sidenav #sidenav class="example-sidenav" position="start" [mode]="mobileQuery.matches ? 'over' : 'side'"
         [fixedTopGap]="options.value.top"
