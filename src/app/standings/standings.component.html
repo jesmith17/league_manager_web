@@ -1,54 +1,48 @@
-<div class="card mat-elevation-z6">
-    <div class="card-header">
-        <h4 class="card-title">Division Standings</h4>
-    </div>
-    <div class="card-body">
-        <table mat-table [dataSource]="teams" matSort #teamSort="matSort" matSortActive="pts" matSortDirection="desc">
-            <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-                <td mat-cell *matCellDef="let element">
-                    <a [routerLink]="['/team', element.id]">{{element.name}}</a> 
-                </td>
-            </ng-container>
-            <ng-container matColumnDef="sm-result">
-                <th class="d-md-none" mat-header-cell *matHeaderCellDef mat-sort-header>Record (W-D-L)</th>
-                <td class="d-md-none" mat-cell *matCellDef="let element"> {{element.record.wins}}-{{element.record.draws}}-{{element.record.losses}} </td>
-            </ng-container>
-            <ng-container matColumnDef="wins">
-                <th class="d-none d-md-table-cell" mat-header-cell *matHeaderCellDef mat-sort-header>Wins</th>
-                <td class="d-none d-md-table-cell" mat-cell *matCellDef="let element"> {{element.record.wins}} </td>
-            </ng-container>
-            <ng-container matColumnDef="losses">
-                <th class="d-none d-md-table-cell" mat-header-cell *matHeaderCellDef mat-sort-header>Losses</th>
-                <td class="d-none d-md-table-cell" mat-cell *matCellDef="let element"> {{element.record.losses}} </td>
-            </ng-container>
-            <ng-container matColumnDef="draws">
-                <th class="d-none d-md-table-cell" mat-header-cell *matHeaderCellDef mat-sort-header>Draws</th>
-                <td class="d-none d-md-table-cell" mat-cell *matCellDef="let element"> {{element.record.draws}} </td>
-            </ng-container>
-            <ng-container matColumnDef="gf">
-                <th class="d-none d-lg-table-cell" mat-header-cell *matHeaderCellDef mat-sort-header>GF</th>
-                <td class="d-none d-lg-table-cell" mat-cell *matCellDef="let element"> {{element.record.goals_for}} </td>
-            </ng-container>
-            <ng-container matColumnDef="ga">
-                <th class="d-none d-lg-table-cell" mat-header-cell *matHeaderCellDef mat-sort-header>GA</th>
-                <td class="d-none d-lg-table-cell" mat-cell *matCellDef="let element"> {{element.record.goals_allowed}} </td>
-            </ng-container>
-            <ng-container matColumnDef="gd">
-                <th class="d-none d-lg-table-cell" mat-header-cell *matHeaderCellDef mat-sort-header>GD</th>
-                <td class="d-none d-lg-table-cell" mat-cell *matCellDef="let element">{{element.record.goal_differential}} </td>
-            </ng-container>
-            <ng-container matColumnDef="pts">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Pts</th>
-                <td mat-cell *matCellDef="let element"> {{element.record.points}} </td>
-            </ng-container>
-            <tr mat-header-row *matHeaderRowDef="teamsColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: teamsColumns;"></tr>
-            <tr class="mat-row" *matNoDataRow>
-                <td class="mat-cell" [attr.colspan]="teamsColumns.length">
-                    <h4>No teams are assigned to this division</h4>
-                </td>
-            </tr>
-        </table>
-    </div>
-</div>
+<p class="text-start display-6">Division Standings</p>
+<table mat-table [dataSource]="teams" matSort #teamSort="matSort" matSortActive="pts" matSortDirection="desc">
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+        <td mat-cell *matCellDef="let element">
+            <a [routerLink]="['/team', element.id]">{{element.name}}</a> 
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="sm-result">
+        <th class="d-md-none" mat-header-cell *matHeaderCellDef mat-sort-header>Record (W-D-L)</th>
+        <td class="d-md-none" mat-cell *matCellDef="let element"> {{element.record.wins}}-{{element.record.draws}}-{{element.record.losses}} </td>
+    </ng-container>
+    <ng-container matColumnDef="wins">
+        <th class="d-none d-md-table-cell" mat-header-cell *matHeaderCellDef mat-sort-header>Wins</th>
+        <td class="d-none d-md-table-cell" mat-cell *matCellDef="let element"> {{element.record.wins}} </td>
+    </ng-container>
+    <ng-container matColumnDef="losses">
+        <th class="d-none d-md-table-cell" mat-header-cell *matHeaderCellDef mat-sort-header>Losses</th>
+        <td class="d-none d-md-table-cell" mat-cell *matCellDef="let element"> {{element.record.losses}} </td>
+    </ng-container>
+    <ng-container matColumnDef="draws">
+        <th class="d-none d-md-table-cell" mat-header-cell *matHeaderCellDef mat-sort-header>Draws</th>
+        <td class="d-none d-md-table-cell" mat-cell *matCellDef="let element"> {{element.record.draws}} </td>
+    </ng-container>
+    <ng-container matColumnDef="gf">
+        <th class="d-none d-lg-table-cell" mat-header-cell *matHeaderCellDef mat-sort-header>GF</th>
+        <td class="d-none d-lg-table-cell" mat-cell *matCellDef="let element"> {{element.record.goals_for}} </td>
+    </ng-container>
+    <ng-container matColumnDef="ga">
+        <th class="d-none d-lg-table-cell" mat-header-cell *matHeaderCellDef mat-sort-header>GA</th>
+        <td class="d-none d-lg-table-cell" mat-cell *matCellDef="let element"> {{element.record.goals_allowed}} </td>
+    </ng-container>
+    <ng-container matColumnDef="gd">
+        <th class="d-none d-lg-table-cell" mat-header-cell *matHeaderCellDef mat-sort-header>GD</th>
+        <td class="d-none d-lg-table-cell" mat-cell *matCellDef="let element">{{element.record.goal_differential}} </td>
+    </ng-container>
+    <ng-container matColumnDef="pts">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Pts</th>
+        <td mat-cell *matCellDef="let element"> {{element.record.points}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="teamsColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: teamsColumns;"></tr>
+    <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" [attr.colspan]="teamsColumns.length">
+            <h4>No teams are assigned to this division</h4>
+        </td>
+    </tr>
+</table>
